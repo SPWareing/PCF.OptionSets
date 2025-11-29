@@ -15,6 +15,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <SolutionRootPath>src</SolutionRootPath>
     <SolutionPackageType>Both</SolutionPackageType>
+     <RuntimeIdentifiers>win</RuntimeIdentifiers>
   </PropertyGroup>
 
   <!-- 
