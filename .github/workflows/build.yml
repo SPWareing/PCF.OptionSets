@@ -26,14 +26,7 @@ jobs:
       with:
         node-version: '20'
     
-    - name: Install Power Platform CLI
-      uses: microsoft/powerplatform-actions/actions-install@v1
-    
         
-    - name: Increment Version (Production Mode)
-      run: pac pcf version --strategy manifest 
-      working-directory: ./CheckmarkControl
-    
     - name: Restore NuGet packages for Solution
       run: dotnet restore OptionsetsSolution/OptionsetsSolution.cdsproj
     
@@ -44,4 +37,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: solution-package
-        path: OptionsetsSolution/bin/Release/*.zip
+        path: OptionsetsSolution/bin/Release/*_managed.zip
