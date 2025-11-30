@@ -52,6 +52,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\CheckmarkControl\CheckmarkControl.pcfproj" />
+    <ProjectReference Include="..\OptionsetColourControl\OptionsetColourControl.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
