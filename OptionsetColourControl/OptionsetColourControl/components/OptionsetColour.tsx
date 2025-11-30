@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { CircleFilled } from '@fluentui/react-icons';
 import {
     FluentProvider,
     Dropdown,
@@ -10,7 +9,9 @@ import {
     OptionOnSelectData,
     makeStyles,
     IdPrefixProvider,
+    tokens,
 } from '@fluentui/react-components';
+import { IconType } from './icon-type';
 
 export interface IOptionsetColourProps {
     options: ComponentFramework.PropertyHelper.OptionMetadata[];
@@ -18,13 +19,15 @@ export interface IOptionsetColourProps {
     theme: Theme;
     onChange: (newValue: number | undefined) => void;
     id: string;
+    iconSize: string | undefined;
+    iconType: string | undefined;
 }
 
 const useStyles = makeStyles({
     container: {
         display: 'flex',
         alignItems: 'center',
-        gap: '10px',
+        gap: tokens.spacingHorizontalM,
     },
     dropdown: {
         minWidth: '150px',
@@ -33,12 +36,16 @@ const useStyles = makeStyles({
     },
 });
 
+const IconSizes: Record<string, number> = { Small: 16, Medium: 20, Large: 24 };
+
 export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
     options,
     selectedValue,
     theme,
     onChange,
     id,
+    iconSize,
+    iconType,
 }: IOptionsetColourProps) => {
     const [selectedKey, setSelectedKey] = useState<number | undefined>(selectedValue);
 
@@ -46,7 +53,9 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
         setSelectedKey(selectedValue);
     }, [selectedValue]);
 
-    const optionSet = [{ Value: -1, Label: '--- Select---', Color: '' }, ...options];
+    const optionSet = React.useMemo(() => [{ Value: -1, Label: '--- Select---', Color: '' }, ...options], [options]);
+
+    const fontSize = iconSize ? IconSizes[iconSize] : IconSizes.Medium;
 
     const optionSelected = (event: SelectionEvents, data: OptionOnSelectData) => {
         const newValue = data.optionValue === '-1' || !data.optionValue ? undefined : parseInt(data.optionValue);
@@ -62,7 +71,7 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
         }
         return (
             <div className={styles.container}>
-                <CircleFilled style={{ color: selectedOption?.Color }} />
+                <IconType icon={iconType} style={{ color: selectedOption?.Color }} fontSize={fontSize} />
                 {selectedOption?.Label}
             </div>
         );
@@ -82,7 +91,7 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
                 >
                     {optionSet.map((option) => (
                         <Option key={option.Value} text={option.Label} value={option.Value.toString()}>
-                            {option.Value !== -1 && <CircleFilled style={{ color: option.Color }} />}
+                            {option.Value !== -1 && <IconType icon={iconType} style={{ color: option.Color }} />}
                             {option.Label}
                         </Option>
                     ))}

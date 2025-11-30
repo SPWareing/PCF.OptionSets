@@ -10,6 +10,8 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
     private _value: number | null;
     private _theme: ComponentFramework.Theme;
     private _id: string = v4();
+    private _iconSize: string | undefined;
+    private _iconType: string | undefined;
 
     /**
      * Empty constructor.
@@ -36,6 +38,8 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
         //eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         this._theme = context.fluentDesignLanguage?.tokenTheme;
         this._value = context.parameters.optionSet.raw;
+        this._iconSize = context.parameters.iconSize.raw ?? undefined;
+        this._iconType = context.parameters.iconType.raw ?? undefined;
     }
 
     /**
@@ -46,7 +50,7 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
         const isTestHarness = context.userSettings.userId === '{00000000-0000-0000-0000-000000000000}';
         this._value = context.parameters.optionSet.raw;
-        const props: IOptionsetColourProps = {} as IOptionsetColourProps;
+
         const rawOptions = isTestHarness
             ? ([
                   { Value: 1, Label: 'Option 1', Color: 'Red' },
@@ -54,12 +58,18 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
                   { Value: 3, Label: 'Option 3', Color: 'Blue' },
               ] as ComponentFramework.PropertyHelper.OptionMetadata[])
             : (context.parameters.optionSet.attributes?.Options ?? []);
-        props.id = this._id;
-        props.options = rawOptions;
-        props.selectedValue = this._value ?? undefined;
-        //eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        props.theme = isTestHarness ? webLightTheme : this._theme;
-        props.onChange = this.onChange;
+
+        const props: IOptionsetColourProps = {
+            id: this._id,
+            options: rawOptions,
+            selectedValue: this._value ?? undefined,
+            //eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            theme: isTestHarness ? webLightTheme : this._theme,
+            onChange: this.onChange,
+            iconSize: this._iconSize,
+            iconType: this._iconType,
+        };
+
         return React.createElement(OptionsetColour, props);
     }
 
