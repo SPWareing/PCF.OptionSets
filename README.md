@@ -12,8 +12,8 @@ There is an option icon Size input to set the pixel size; defaults to 50px if bl
 ### Icons
 
 <div>
-  <img src="./images/checkmark.png" alt="CheckmarkCircleColor" width="200" style="display:inline-block; margin-right:20px;" />
-  <img src="./images/dismiss.png" alt="DismissCircleColor" width="200" style="display:inline-block;" />
+  <img src="./images/checkmark.png" alt="CheckmarkCircleColor" height="150" width="300" style="display:inline-block; margin-right:20px;" />
+  <img src="./images/dismiss.png" alt="DismissCircleColor" height="150" width="300" style="display:inline-block;" />
 </div>
 
 **CheckmarkCircleColor** (left) | **DismissCircleColor** (right)
