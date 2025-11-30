@@ -2,12 +2,14 @@ import { IInputs, IOutputs } from './generated/ManifestTypes';
 import { OptionsetColour, IOptionsetColourProps } from './components/OptionsetColour';
 import { webLightTheme } from '@fluentui/react-components';
 import * as React from 'react';
+import { v4 } from 'uuid';
 
 export class OptionsetColourControl implements ComponentFramework.ReactControl<IInputs, IOutputs> {
     private notifyOutputChanged: () => void;
     private _context: ComponentFramework.Context<IInputs>;
     private _value: number | null;
     private _theme: ComponentFramework.Theme;
+    private _id: string = v4();
 
     /**
      * Empty constructor.
@@ -31,7 +33,8 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
         this.notifyOutputChanged = notifyOutputChanged;
         this._context = context;
         this._context.mode.trackContainerResize(true);
-        this._theme = context.fluentDesignLanguage;
+        //eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        this._theme = context.fluentDesignLanguage?.tokenTheme;
         this._value = context.parameters.optionSet.raw;
     }
 
@@ -51,6 +54,7 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
                   { Value: 3, Label: 'Option 3', Color: 'Blue' },
               ] as ComponentFramework.PropertyHelper.OptionMetadata[])
             : (context.parameters.optionSet.attributes?.Options ?? []);
+        props.id = this._id;
         props.options = rawOptions;
         props.selectedValue = this._value ?? undefined;
         //eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

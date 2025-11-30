@@ -17,6 +17,7 @@ export interface IOptionsetColourProps {
     selectedValue: number | undefined;
     theme: Theme;
     onChange: (newValue: number | undefined) => void;
+    id: string;
 }
 
 const useStyles = makeStyles({
@@ -37,6 +38,7 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
     selectedValue,
     theme,
     onChange,
+    id,
 }: IOptionsetColourProps) => {
     const [selectedKey, setSelectedKey] = useState<number | undefined>(selectedValue);
 
@@ -67,7 +69,7 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
     };
 
     return (
-        <IdPrefixProvider value="optionset-colour-control">
+        <IdPrefixProvider value={`optionset-colour-control-${id}`}>
             <FluentProvider theme={theme} style={{ width: '100%' }}>
                 <Dropdown
                     className={styles.dropdown}
