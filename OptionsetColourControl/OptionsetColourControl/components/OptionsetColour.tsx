@@ -21,6 +21,7 @@ export interface IOptionsetColourProps {
     id: string;
     iconSize: string | undefined;
     iconType: string | undefined;
+    backGroundFill: boolean;
 }
 
 const useStyles = makeStyles({
@@ -33,6 +34,9 @@ const useStyles = makeStyles({
         minWidth: '150px',
         height: '32px',
         width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
     },
 });
 
@@ -46,6 +50,7 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
     id,
     iconSize,
     iconType,
+    backGroundFill,
 }: IOptionsetColourProps) => {
     const [selectedKey, setSelectedKey] = useState<number | undefined>(selectedValue);
 
@@ -62,16 +67,31 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
         setSelectedKey(newValue);
         onChange(newValue);
     };
-
     const selectedOption = options.find((opt) => opt.Value === selectedKey);
+    const fillStyles: React.CSSProperties | undefined = backGroundFill
+        ? {
+              background: selectedOption?.Color,
+              color: theme.colorNeutralForegroundInverted,
+              borderRadius: tokens.borderRadiusMedium,
+              padding: '2px 16px',
+              justifyContent: 'flex-start',
+              width: 'fit-content',
+              minWidth: '75%',
+              boxSizing: 'border-box',
+          }
+        : undefined;
+
     const styles = useStyles();
     const buttonRender = () => {
         if (selectedKey === undefined || selectedKey === -1) {
             return <span>{'---'}</span>;
         }
+
         return (
-            <div className={styles.container}>
-                <IconType icon={iconType} style={{ color: selectedOption?.Color }} fontSize={fontSize} />
+            <div className={styles.container} style={fillStyles}>
+                {!backGroundFill && (
+                    <IconType icon={iconType} style={{ color: selectedOption?.Color }} fontSize={fontSize} />
+                )}
                 {selectedOption?.Label}
             </div>
         );

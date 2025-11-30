@@ -12,6 +12,7 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
     private _id: string = v4();
     private _iconSize: string | undefined;
     private _iconType: string | undefined;
+    private _backGroundFill: boolean;
 
     /**
      * Empty constructor.
@@ -40,6 +41,7 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
         this._value = context.parameters.optionSet.raw;
         this._iconSize = context.parameters.iconSize.raw ?? undefined;
         this._iconType = context.parameters.iconType.raw ?? undefined;
+        this._backGroundFill = context.parameters.backGroundFill.raw === '0' ? false : true;
     }
 
     /**
@@ -68,6 +70,7 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
             onChange: this.onChange,
             iconSize: this._iconSize,
             iconType: this._iconType,
+            backGroundFill: this._backGroundFill,
         };
 
         return React.createElement(OptionsetColour, props);
