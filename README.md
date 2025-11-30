@@ -1,6 +1,16 @@
 # PCF.OptionSets
 Collection of Optionset field controls for Model Driven Apps
 
+## Table of Contents
+- [PCF.OptionSets](#pcfoptionsets)
+  - [Table of Contents](#table-of-contents)
+  - [Checkmark Control](#checkmark-control)
+    - [Icons](#icons)
+  - [Optionset Colour](#optionset-colour)
+    - [Icon Size](#icon-size)
+    - [Icon Type](#icon-type)
+    - [Background Fill](#background-fill)
+
 ## Checkmark Control
 
 Updated version of the [Checkmark Control](https://github.com/BendenBlanken/CheckmarkControl)
@@ -29,9 +39,10 @@ This control has additional inputs allowing the configuration of:
 
 1. Icon Size
 2. Icon Type
+3. Background Fill
 
 
-#### Icon Size
+### Icon Size
 
 Three sizes
 1. Small (16)
@@ -44,6 +55,10 @@ Currently two
 
 1. CircleFilled
 2. CircleRegular
+
+### Background Fill
+
+Boolean Enum property set to false. On setting true, icons are removed from selection; but not dropdown options, and background is set to the option colour. Text colour is set to neutral, allowing dark colours to be used.
 
 ---
 
