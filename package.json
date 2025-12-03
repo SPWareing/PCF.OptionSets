@@ -1,0 +1,13 @@
+{
+    "name": "pcf-optionsets",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "CheckmarkControl",
+        "OptionsetColourControl"
+    ],
+    "devDependencies": {
+        "symlink-dir": "^8.0.0"
+    }
+    
+}

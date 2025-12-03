@@ -12,6 +12,8 @@
     <ProjectGuid>31c2d016-c140-4999-8248-346a42a3e57a</ProjectGuid>
     <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
     <PcfBuildMode>production</PcfBuildMode>
+    <!-- required to disable auto npm install on build -->
+    <PcfEnableAutoNpmInstall>false</PcfEnableAutoNpmInstall>
      <RuntimeIdentifiers>win</RuntimeIdentifiers>
   </PropertyGroup>
 
