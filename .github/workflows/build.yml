@@ -35,7 +35,8 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-    
+    - name: Install dependencies
+      run: npm install
         
     - name: Restore NuGet packages for Solution
       run: dotnet restore OptionsetsSolution/OptionsetsSolution.cdsproj
@@ -46,5 +47,5 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: OptionsetsSolution
+        name: OptionsetsSolution.zip
         path: OptionsetsSolution/bin/Release/*_managed.zip

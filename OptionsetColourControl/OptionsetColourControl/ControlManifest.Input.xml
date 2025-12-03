@@ -26,7 +26,12 @@
     </property>
     <property name="iconType" display-name-key="IconType" description-key="Type of the icon" of-type="Enum" usage="input" required="false" default-value="CircleFilled">
       <value name="CircleFilled" display-name-key="IconType_CircleFilled">CircleFilled</value>
-      <value name="CircleRegular" display-name-key="IconType_CircleRegular">CircleRegular</value>
+      <value name="OvalFilled" display-name-key="IconType_OvalFilled">OvalFilled</value>
+    </property>
+
+    <property name="backGroundFill" display-name-key="Background Fill" description-key="Set the colour background based of the option colour" of-type="Enum" usage="input" required="false" default-value="0">
+      <value name="false" display-name-key="False">0</value>
+      <value name="true" display-name-key="True">1</value>
     </property>
     <!--
       Property node's of-type attribute can be of-type-group attribute.

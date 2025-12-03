@@ -11,7 +11,9 @@
     <Name>CheckmarkControl</Name>
     <ProjectGuid>edbf64a8-4bb2-406d-9e8c-83a6fd2100b7</ProjectGuid>
     <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
-     <PcfBuildMode>production</PcfBuildMode>
+    <!-- required to disable auto npm install on build -->
+    <PcfEnableAutoNpmInstall>false</PcfEnableAutoNpmInstall>
+    <PcfBuildMode>production</PcfBuildMode>
   </PropertyGroup>
 
   <PropertyGroup>
