@@ -1,5 +1,5 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
-import {Checkmark, CheckmarkProps} from "./components/checkmark";
+import {Checkmark, CheckmarkProps} from "./components/Checkmark";
 import * as React from "react";
 import { webLightTheme } from "@fluentui/react-components";
 

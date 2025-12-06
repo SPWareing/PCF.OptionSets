@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, tokens } from '@fluentui/react-components';
-import { IconType } from './IconType';
+import { IconType } from '@pcf-optionsets/shared';
 
 export interface DropdownButtonProps {
     selectedKey: number | undefined;

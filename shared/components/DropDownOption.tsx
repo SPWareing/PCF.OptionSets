@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Option } from '@fluentui/react-components';
-import { IconType } from './IconType';
+import { IconType } from '@pcf-optionsets/shared';
 
 interface DropdownOptionProps {
-    option: ComponentFramework.PropertyHelper.OptionMetadata & { Value: number; Label: string; Color: string };
+    option: ComponentFramework.PropertyHelper.OptionMetadata;
     iconType: string | undefined;
 }
 
