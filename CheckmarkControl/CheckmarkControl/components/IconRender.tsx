@@ -1,7 +1,7 @@
 import * as React from "react";
 import {CheckmarkCircleColor , DismissCircleColor} from "@fluentui/react-icons";
 import {FluentProvider, Theme, makeStyles} from "@fluentui/react-components";
-import { CheckmarkProps } from "./Checkmark";
+import { CheckmarkProps } from "./Checkmarks";
 
 const useStyles = makeStyles({
     container: {
