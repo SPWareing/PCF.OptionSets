@@ -45,6 +45,7 @@ jobs:
       run: dotnet build OptionsetsSolution/OptionsetsSolution.cdsproj -c Release
     
     - name: Upload build artifacts
+      if: ${{github.event_name != 'pull_request'}}  
       uses: actions/upload-artifact@v4
       with:
         name: OptionsetsSolution.zip
