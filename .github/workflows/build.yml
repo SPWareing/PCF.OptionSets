@@ -48,5 +48,5 @@ jobs:
       if: ${{github.event_name != 'pull_request'}}  
       uses: actions/upload-artifact@v4
       with:
-        name: OptionsetsSolution.zip
-        path: OptionsetsSolution/bin/Release/*_managed.zip
+        name: OptionsetsSolution
+        path: OptionsetsSolution/bin/Release/*.zip
