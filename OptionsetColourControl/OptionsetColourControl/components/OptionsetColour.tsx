@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import {
     FluentProvider,
     Dropdown,
-    Option,
     Theme,
     SelectionEvents,
     OptionOnSelectData,
@@ -11,7 +10,9 @@ import {
     IdPrefixProvider,
     tokens,
 } from '@fluentui/react-components';
-import { IconType } from './icon-type';
+import { getIconSize } from '../utils/getIconSize';
+import { DropdownButton, DropdownButtonProps } from './DropDownButton';
+import { DropdownOption } from './DropDownOption';
 
 export interface IOptionsetColourProps {
     options: ComponentFramework.PropertyHelper.OptionMetadata[];
@@ -26,14 +27,6 @@ export interface IOptionsetColourProps {
 }
 
 const useStyles = makeStyles({
-    container: {
-        display: 'flex',
-        alignItems: 'center',
-        gap: tokens.spacingHorizontalM,
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-    },
     dropdown: {
         minWidth: '150px',
         height: '32px',
@@ -49,8 +42,6 @@ const useStyles = makeStyles({
         },
     },
 });
-
-const IconSizes: Record<string, number> = { Small: 16, Medium: 20, Large: 24 };
 
 export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
     options,
@@ -69,9 +60,9 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
         setSelectedKey(selectedValue);
     }, [selectedValue]);
 
-    const optionSet = React.useMemo(() => [{ Value: -1, Label: '--- Select---', Color: '' }, ...options], [options]);
+    const optionSet = React.useMemo(() => [{ Value: -1, Label: '--- Select ---', Color: '' }, ...options], [options]);
 
-    const fontSize = iconSize ? IconSizes[iconSize] : IconSizes.Medium;
+    const fontSize = getIconSize(iconSize);
 
     const optionSelected = (event: SelectionEvents, data: OptionOnSelectData) => {
         const newValue = data.optionValue === '-1' || !data.optionValue ? undefined : parseInt(data.optionValue);
@@ -93,23 +84,14 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
         : undefined;
 
     const styles = useStyles();
-    const buttonRender = () => {
-        if (selectedKey === undefined || selectedKey === -1) {
-            return <span>{'---'}</span>;
-        }
 
-        return (
-            <div className={styles.container} style={fillStyles} title={selectedOption?.Label}>
-                {!backGroundFill && (
-                    <IconType
-                        icon={iconType}
-                        style={{ color: selectedOption?.Color, flexShrink: '0' }}
-                        fontSize={fontSize}
-                    />
-                )}
-                {selectedOption?.Label}
-            </div>
-        );
+    const dropdownButtonProps: DropdownButtonProps = {
+        selectedKey,
+        selectedOption,
+        fillStyles,
+        backGroundFill,
+        iconType,
+        fontSize: fontSize.toString(),
     };
 
     return (
@@ -122,14 +104,11 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
                     defaultValue={selectedKey !== undefined ? selectedKey.toString() : ''}
                     defaultSelectedOptions={selectedKey !== undefined ? [selectedKey.toString()] : []}
                     appearance="filled-darker"
-                    button={buttonRender()}
+                    button={<DropdownButton {...dropdownButtonProps} />}
                     disabled={disabled}
                 >
                     {optionSet.map((option) => (
-                        <Option key={option.Value} text={option.Label} value={option.Value.toString()}>
-                            {option.Value !== -1 && <IconType icon={iconType} style={{ color: option.Color }} />}
-                            {option.Label}
-                        </Option>
+                        <DropdownOption key={option.Value} {...{ option, iconType }} />
                     ))}
                 </Dropdown>
             </FluentProvider>
