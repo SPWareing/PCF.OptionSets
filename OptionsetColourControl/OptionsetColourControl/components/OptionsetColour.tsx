@@ -10,9 +10,8 @@ import {
     IdPrefixProvider,
     tokens,
 } from '@fluentui/react-components';
-import { getIconSize } from '../utils/getIconSize';
+import { getIconSize, DropdownOption } from '@pcf-optionsets/shared';
 import { DropdownButton, DropdownButtonProps } from './DropDownButton';
-import { DropdownOption } from './DropDownOption';
 
 export interface IOptionsetColourProps {
     options: ComponentFramework.PropertyHelper.OptionMetadata[];
