@@ -22,6 +22,7 @@ export interface IOptionsetColourProps {
     iconSize: string | undefined;
     iconType: string | undefined;
     backGroundFill: boolean;
+    disabled: boolean;
 }
 
 const useStyles = makeStyles({
@@ -29,6 +30,9 @@ const useStyles = makeStyles({
         display: 'flex',
         alignItems: 'center',
         gap: tokens.spacingHorizontalM,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
     },
     dropdown: {
         minWidth: '150px',
@@ -37,6 +41,12 @@ const useStyles = makeStyles({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',
+        '& button': {
+            ': disabled': {
+                backgroundColor: tokens.colorNeutralBackground1Hover,
+                color: tokens.colorNeutralForeground1,
+            },
+        },
     },
 });
 
@@ -51,6 +61,7 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
     iconSize,
     iconType,
     backGroundFill,
+    disabled,
 }: IOptionsetColourProps) => {
     const [selectedKey, setSelectedKey] = useState<number | undefined>(selectedValue);
 
@@ -88,9 +99,13 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
         }
 
         return (
-            <div className={styles.container} style={fillStyles}>
+            <div className={styles.container} style={fillStyles} title={selectedOption?.Label}>
                 {!backGroundFill && (
-                    <IconType icon={iconType} style={{ color: selectedOption?.Color }} fontSize={fontSize} />
+                    <IconType
+                        icon={iconType}
+                        style={{ color: selectedOption?.Color, flexShrink: '0' }}
+                        fontSize={fontSize}
+                    />
                 )}
                 {selectedOption?.Label}
             </div>
@@ -108,6 +123,7 @@ export const OptionsetColour: React.FC<IOptionsetColourProps> = ({
                     defaultSelectedOptions={selectedKey !== undefined ? [selectedKey.toString()] : []}
                     appearance="filled-darker"
                     button={buttonRender()}
+                    disabled={disabled}
                 >
                     {optionSet.map((option) => (
                         <Option key={option.Value} text={option.Label} value={option.Value.toString()}>

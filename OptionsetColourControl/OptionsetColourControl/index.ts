@@ -13,6 +13,7 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
     private _iconSize: string | undefined;
     private _iconType: string | undefined;
     private _backGroundFill: boolean;
+    private _disabled: boolean;
 
     /**
      * Empty constructor.
@@ -42,6 +43,7 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
         this._iconSize = context.parameters.iconSize.raw ?? undefined;
         this._iconType = context.parameters.iconType.raw ?? undefined;
         this._backGroundFill = context.parameters.backGroundFill.raw === '0' ? false : true;
+        this._disabled = context.mode.isControlDisabled;
     }
 
     /**
@@ -52,10 +54,11 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
         const isTestHarness = context.userSettings.userId === '{00000000-0000-0000-0000-000000000000}';
         this._value = context.parameters.optionSet.raw;
+        this._disabled = context.mode.isControlDisabled;
 
         const rawOptions = isTestHarness
             ? ([
-                  { Value: 1, Label: 'Option 1', Color: 'Red' },
+                  { Value: 1, Label: 'Option 1 has a long label', Color: 'Red' },
                   { Value: 2, Label: 'Option 2', Color: 'Green' },
                   { Value: 3, Label: 'Option 3', Color: 'Blue' },
               ] as ComponentFramework.PropertyHelper.OptionMetadata[])
@@ -71,6 +74,7 @@ export class OptionsetColourControl implements ComponentFramework.ReactControl<I
             iconSize: this._iconSize,
             iconType: this._iconType,
             backGroundFill: this._backGroundFill,
+            disabled: this._disabled,
         };
 
         return React.createElement(OptionsetColour, props);

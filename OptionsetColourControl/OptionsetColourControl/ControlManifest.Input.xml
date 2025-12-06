@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="SPWareing" constructor="OptionsetColourControl" version="0.0.6" display-name-key="OptionsetColourControl" description-key="OptionsetColourControl description" control-type="virtual">
+  <control namespace="SPWareing" constructor="OptionsetColourControl" version="0.0.8" display-name-key="OptionsetColourControl" description-key="OptionsetColourControl description" control-type="virtual">
     <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
     If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
     Example1:
@@ -28,7 +28,6 @@
       <value name="CircleFilled" display-name-key="IconType_CircleFilled">CircleFilled</value>
       <value name="OvalFilled" display-name-key="IconType_OvalFilled">OvalFilled</value>
     </property>
-
     <property name="backGroundFill" display-name-key="Background Fill" description-key="Set the colour background based of the option colour" of-type="Enum" usage="input" required="false" default-value="0">
       <value name="false" display-name-key="False">0</value>
       <value name="true" display-name-key="True">1</value>

@@ -9,7 +9,7 @@ import typescriptEslint from "typescript-eslint";
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    ignores: ["**/generated"],
+    ignores: ["**/generated", "*.mjs"],
   },
   prettierPlugin,
   eslintjs.configs.recommended,
