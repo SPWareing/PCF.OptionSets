@@ -83,8 +83,6 @@ This control has additional inputs allowing the configuration of:
 
 ### Icon Type
 
-Currently two
-
 - `CircleFilled`
 - `CircleRegular`
 
