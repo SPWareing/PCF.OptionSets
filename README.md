@@ -1,6 +1,6 @@
 # PCF.OptionSets
 
-Collection of Fluent UI v9 PCF controls for Model Driven Apps, focused on option-set visuals that stay readable, configurable, and easy to adopt.
+Collection of Fluent UI v9 PCF controls for model-driven apps, focused on option set visuals that stay readable, configurable, and easy to adopt.
 
 ## Highlights
 
