@@ -1,8 +1,44 @@
 # PCF.OptionSets
-Collection of Optionset field controls for Model Driven Apps
+
+Collection of Fluent UI v9 PCF controls for model-driven apps, focused on option set visuals that stay readable, configurable, and easy to adopt.
+
+## Highlights
+
+- Two option-set controls built for model-driven apps.
+- Fluent UI v9 styling with a lightweight virtual control approach.
+- Configurable icon sizing, icon type, and background fill behavior.
+
+## Overview
+
+This repository contains two related controls designed to make option sets easier to scan and configure in model-driven apps.
+
+| Control | Purpose | Notable options |
+| --- | --- | --- |
+| Checkmark Control | Displays checkmark and dismiss states with a simple icon-driven layout. | Icon size |
+| Optionset Colour | Adds icon and background color treatment for option sets. | Icon size, icon type, background fill |
+
+## Preview
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="./images/checkmark.png" alt="CheckmarkCircleColor" height="125" width="275" />
+      <br />
+      <strong>CheckmarkCircleColor</strong>
+    </td>
+    <td align="center">
+      <img src="./images/dismiss.png" alt="DismissCircleColor" height="125" width="275" />
+      <br />
+      <strong>DismissCircleColor</strong>
+    </td>
+  </tr>
+</table>
 
 ## Table of Contents
 - [PCF.OptionSets](#pcfoptionsets)
+  - [Highlights](#highlights)
+  - [Overview](#overview)
+  - [Preview](#preview)
   - [Table of Contents](#table-of-contents)
   - [Checkmark Control](#checkmark-control)
     - [Icons](#icons)
@@ -13,55 +49,61 @@ Collection of Optionset field controls for Model Driven Apps
 
 ## Checkmark Control
 
-Updated version of the [Checkmark Control](https://github.com/BendenBlanken/CheckmarkControl)
+Updated version of the [Checkmark Control](https://github.com/BendenBlanken/CheckmarkControl).
 
-This version is a virtual control built using the FluentUI V9 library
+This version is a virtual control built using the Fluent UI v9 library.
 
-There is an option icon Size input to set the pixel size; defaults to 50px if blank.
+There is an optional icon size input that sets the pixel size and defaults to 50px if blank.
 
 ### Icons
 
-<div>
-  <img src="./images/checkmark.png" alt="CheckmarkCircleColor" height="150" width="300" style="display:inline-block; margin-right:20px;" />
-  <img src="./images/dismiss.png" alt="DismissCircleColor" height="150" width="300" style="display:inline-block;" />
-</div>
-
-**CheckmarkCircleColor** (left) | **DismissCircleColor** (right)
+The images above show the two icon states used by the control.
 
 
 ---------
 
 ## Optionset Colour
 
-Modified FluentUI version of the [PCF.ColourfulOptionset](https://github.com/ORBISAG/ORBIS.PCF.ColorfulOptionset)
+Modified Fluent UI version of the [PCF.ColourfulOptionset](https://github.com/ORBISAG/ORBIS.PCF.ColorfulOptionset).
 
 This control has additional inputs allowing the configuration of:
 
-1. Icon Size
-2. Icon Type
-3. Background Fill
+| Option | Values | Default | Notes |
+| --- | --- | --- | --- |
+| Icon Size | Small, Medium, Large | Medium (20) | Controls the rendered icon size. |
+| Icon Type | CircleFilled, CircleRegular | CircleFilled | Selects the icon style. |
+| Background Fill | True, False | False | Uses the option color as the background and removes selection icons. |
 
 
 ### Icon Size
 
-Three sizes
-1. Small (16)
-2. Medium (20) --Default
-3. Large (24)
+- `Small` (`16`)
+- `Medium` (`20`) - Default
+- `Large` (`24`)
 
 ### Icon Type
 
-Currently two
-
-1. CircleFilled
-2. CircleRegular
+- `CircleFilled`
+- `CircleRegular`
 
 ### Background Fill
 
-Boolean Enum property set to false. On setting true, icons are removed from selection; but not dropdown options, and background is set to the option colour. Text colour is set to neutral, allowing dark colours to be used.
+Boolean enum property set to false. When true, icons are removed from selection but not from dropdown options, and the background is set to the option color. Text color is set to neutral, allowing dark colors to be used.
 
 ---
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+<table>
+  <tr>
+    <td align="left">
+      <a href="https://github.com/SPWareing/PCF.OptionSets/actions/workflows/build.yml">
+        <img src="https://github.com/SPWareing/PCF.OptionSets/actions/workflows/build.yml/badge.svg" alt="Build Power Apps Solution" />
+      </a>
+    </td>
+    <td align="right">
+      <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" />
+      <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+    </td>
+  </tr>
+</table>
 
-[![Build Power Apps Solution](https://github.com/SPWareing/PCF.OptionSets/actions/workflows/build.yml/badge.svg)](https://github.com/SPWareing/PCF.OptionSets/actions/workflows/build.yml)
+
