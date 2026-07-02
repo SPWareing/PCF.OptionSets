@@ -17,7 +17,11 @@ on:
       - '*.md'
       - 'images/**'
       - '.gitignore'
-
+      
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
 jobs:
   build:
     runs-on: windows-latest
@@ -34,15 +38,15 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
+        node-version: '24'
     - name: Install dependencies
-      run: npm install
+      run: npm ci
         
     - name: Restore NuGet packages for Solution
       run: dotnet restore OptionsetsSolution/OptionsetsSolution.cdsproj
     
     - name: Build Solution Package
-      run: dotnet build OptionsetsSolution/OptionsetsSolution.cdsproj -c Release
+      run: dotnet build OptionsetsSolution/OptionsetsSolution.cdsproj -c Release --no-restore
     
     - name: Upload build artifacts
       if: ${{github.event_name != 'pull_request'}}  
