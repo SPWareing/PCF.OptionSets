@@ -95,8 +95,8 @@ Boolean enum property set to false. When true, icons are removed from selection 
 <table>
   <tr>
     <td align="left">
-      <a href="https://github.com/SPWareing/PCF.OptionSets/actions/workflows/build.yml">
-        <img src="https://github.com/SPWareing/PCF.OptionSets/actions/workflows/build.yml/badge.svg" alt="Build Power Apps Solution" />
+      <a href="https://github.com/SPWareing/PCF.OptionSets/actions/workflows/main.yml">
+        <img src="https://github.com/SPWareing/PCF.OptionSets/actions/workflows/main.yml/badge.svg" alt="Build Power Apps Solution" />
       </a>
     </td>
     <td align="right">
