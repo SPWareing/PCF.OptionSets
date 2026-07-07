@@ -1,6 +1,7 @@
 name: Build Power Apps Solution
 
 on:
+  workflow_dispatch: 
   push:
     branches:
       - main
