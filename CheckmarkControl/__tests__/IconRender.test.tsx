@@ -8,15 +8,11 @@ const renderWithFluentProvider = (ui: React.ReactElement) =>
     render(<FluentProvider theme={webLightTheme}>{ui}</FluentProvider>);
 
 describe('IconRender', () => {
-    it('renders without crashing when value is true', () => {
-        const { container } = renderWithFluentProvider(<IconRender value={true} />);
-        expect(container.firstChild).not.toBeNull();
-    });
 
-    it('renders without crashing when value is false', () => {
-        const { container } = renderWithFluentProvider(<IconRender value={false} />);
+    it.each([true, false])('renders without crashing when value is %s', (value) => {
+        const {container} = renderWithFluentProvider(<IconRender value={value}/>);
         expect(container.firstChild).not.toBeNull();
-    });
+    });    
 
     it('renders an SVG icon', () => {
         const { container } = renderWithFluentProvider(<IconRender value={true} />);
