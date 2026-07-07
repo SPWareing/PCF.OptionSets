@@ -1,0 +1,33 @@
+name: Build Power Apps Solution
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - '*.md'
+      - 'images/**'
+      - '.gitignore'
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - '*.md'
+      - 'images/**'
+      - '.gitignore'
+      
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
+jobs:
+  test:
+    uses: ./.github/workflows/test-template.yml
+
+  build:
+    needs: test
+    uses: ./.github/workflows/build-template.yml
+    with:
+      upload-artifact: ${{ github.event_name != 'pull_request' }}

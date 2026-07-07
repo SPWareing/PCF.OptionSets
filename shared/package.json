@@ -5,9 +5,9 @@
   "types": "index.ts",
   "private": true,
   "scripts": {
-    
     "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "test": "vitest run"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.68.0",

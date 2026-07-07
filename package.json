@@ -7,8 +7,15 @@
         "CheckmarkControl",
         "OptionsetColourControl"
     ],
+    "scripts": {
+        "test": "vitest run"
+    },
     "devDependencies": {
-        "symlink-dir": "^8.0.0"
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/react": "^12.1.5",
+        "@testing-library/user-event": "^14.6.1",
+        "jsdom": "^29.1.1",
+        "symlink-dir": "^8.0.0",
+        "vitest": "^4.1.10"
     }
-    
 }
