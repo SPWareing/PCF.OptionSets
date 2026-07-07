@@ -1,24 +1,24 @@
 import { describe, it, expect } from 'vitest';
-import { getIconSize } from '../utils/getIconSize';
+import { getIconSize, IconSizes } from '../utils/getIconSize';
 
 describe('getIconSize', () => {
     it('returns Medium size (20) when iconSize is undefined', () => {
-        expect(getIconSize(undefined)).toBe(20);
+        expect(getIconSize(undefined)).toBe(IconSizes.Medium);
     });
 
     it('returns 16 for Small', () => {
-        expect(getIconSize('Small')).toBe(16);
+        expect(getIconSize('Small')).toBe(IconSizes.Small);
     });
 
     it('returns 20 for Medium', () => {
-        expect(getIconSize('Medium')).toBe(20);
+        expect(getIconSize('Medium')).toBe(IconSizes.Medium);
     });
 
     it('returns 24 for Large', () => {
-        expect(getIconSize('Large')).toBe(24);
+        expect(getIconSize('Large')).toBe(IconSizes.Large);
     });
 
     it('returns Medium size (20) for an empty string', () => {
-        expect(getIconSize('')).toBe(20);
+        expect(getIconSize('')).toBe(IconSizes.Medium);
     });
 });

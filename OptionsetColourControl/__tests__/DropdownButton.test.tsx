@@ -8,24 +8,11 @@ const renderWithFluentProvider = (ui: React.ReactElement) =>
     render(<FluentProvider theme={webLightTheme}>{ui}</FluentProvider>);
 
 describe('DropdownButton', () => {
-    it('renders "---" when selectedKey is undefined', () => {
-        const { getByText } = renderWithFluentProvider(
-            <DropdownButton
-                selectedKey={undefined}
-                selectedOption={undefined}
-                fillStyles={undefined}
-                backGroundFill={false}
-                iconType={undefined}
-                fontSize="20"
-            />,
-        );
-        expect(getByText('---')).toBeInTheDocument();
-    });
 
-    it('renders "---" when selectedKey is -1', () => {
-        const { getByText } = renderWithFluentProvider(
+    it.each([{selectedKey: undefined}, {selectedKey: -1}])(`renders "---" when selectedKey is %p`, ({selectedKey})=> {
+         const { getByText } = renderWithFluentProvider(
             <DropdownButton
-                selectedKey={-1}
+                selectedKey={selectedKey}
                 selectedOption={undefined}
                 fillStyles={undefined}
                 backGroundFill={false}
@@ -35,6 +22,7 @@ describe('DropdownButton', () => {
         );
         expect(getByText('---')).toBeInTheDocument();
     });
+    
 
     it('renders the option label when a valid option is selected', () => {
         const selectedOption = { Value: 1, Label: 'Option 1', Color: 'Red' } as ComponentFramework.PropertyHelper.OptionMetadata;

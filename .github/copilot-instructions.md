@@ -44,6 +44,10 @@ workspace-style setup.
 - Avoid touching `node_modules/` content.
 - Keep solution packaging edits in `OptionsetsSolution/src/Other/` intentional and minimal.
 
+## Testing Guidance
+
+- Prefer it.each for parameterized tests in vitest.
+
 ## Pull Request Expectations
 
 - Summarize which control/package was changed and why.
