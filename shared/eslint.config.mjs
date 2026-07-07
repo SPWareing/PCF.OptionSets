@@ -3,13 +3,14 @@ import microsoftPowerApps from "@microsoft/eslint-plugin-power-apps";
 import pluginPromise from "eslint-plugin-promise";
 import prettierPlugin from 'eslint-plugin-prettier/recommended';
 import reactPlugin from "eslint-plugin-react";
+import vitest from "eslint-plugin-vitest";
 import globals from "globals";
 import typescriptEslint from "typescript-eslint";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    ignores: ["**/generated", "*.mjs"],
+    ignores: ["**/generated", "*.mjs", "*.setup.ts"],
   },
   prettierPlugin,
   eslintjs.configs.recommended,
@@ -18,6 +19,27 @@ export default [
   pluginPromise.configs["flat/recommended"],
   microsoftPowerApps.configs.paCheckerHosted,
   reactPlugin.configs.flat.recommended,
+  {
+    files: ["**/__tests__/**/*.{test,spec}.{ts,tsx}"],
+    plugins: {
+      vitest,
+    },
+    languageOptions: {
+      globals: {
+        ...vitest.configs.env.languageOptions.globals,
+      },
+    },
+    rules: {
+      ...vitest.configs.recommended.rules,
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/unbound-method": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "max-lines-per-function": "off",
+    },
+  },
   {
     plugins: {
       "@microsoft/power-apps": microsoftPowerApps,
