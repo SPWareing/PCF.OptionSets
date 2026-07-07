@@ -5,33 +5,18 @@ import { webLightTheme } from '@fluentui/react-components';
 import { Checkmark } from '../CheckmarkControl/components/Checkmarks';
 
 describe('Checkmark', () => {
-    it('renders without crashing when value is true', () => {
+
+    it.each([true, false])('renders without crashing when value is %s', (value) => {
         const onChange = vi.fn();
-        const { container } = render(
-            <Checkmark value={true} theme={webLightTheme} onChange={onChange} />,
-        );
+        const {container} = render(<Checkmark value={value} theme={webLightTheme} onChange={onChange}/>);
         expect(container.firstChild).not.toBeNull();
     });
 
-    it('renders without crashing when value is false', () => {
+    it.each([true, false])('calls onChange on mount with the %s', (value) => {
         const onChange = vi.fn();
-        const { container } = render(
-            <Checkmark value={false} theme={webLightTheme} onChange={onChange} />,
-        );
-        expect(container.firstChild).not.toBeNull();
-    });
-
-    it('calls onChange on mount with the initial value', () => {
-        const onChange = vi.fn();
-        render(<Checkmark value={true} theme={webLightTheme} onChange={onChange} />);
-        expect(onChange).toHaveBeenCalledWith(true);
-    });
-
-    it('calls onChange on mount with false value', () => {
-        const onChange = vi.fn();
-        render(<Checkmark value={false} theme={webLightTheme} onChange={onChange} />);
-        expect(onChange).toHaveBeenCalledWith(false);
-    });
+        const {container} = render(<Checkmark value={value} theme={webLightTheme} onChange={onChange}/>);
+        expect(onChange).toHaveBeenCalledWith(value);
+    });    
 
     it('renders an SVG icon', () => {
         const onChange = vi.fn();
