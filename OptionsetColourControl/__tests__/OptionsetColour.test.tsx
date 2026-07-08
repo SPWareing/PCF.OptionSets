@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { webLightTheme } from '@fluentui/react-components';
 import { OptionsetColour } from '../OptionsetColourControl/components/OptionsetColour';
+import { ICONS } from '@pcf-optionsets/shared/constants';
 
 const mockOptions: ComponentFramework.PropertyHelper.OptionMetadata[] = [
     { Value: 1, Label: 'Option 1', Color: 'Red' } as ComponentFramework.PropertyHelper.OptionMetadata,
@@ -21,7 +22,7 @@ describe('OptionsetColour', () => {
                 onChange={onChange}
                 id="test-id"
                 iconSize="Medium"
-                iconType="CircleFilled"
+                iconType={ICONS.CIRCLE_FILLED}
                 backGroundFill={false}
                 disabled={false}
             />,
@@ -39,7 +40,7 @@ describe('OptionsetColour', () => {
                 onChange={onChange}
                 id="test-id"
                 iconSize="Medium"
-                iconType="CircleFilled"
+                iconType={ICONS.CIRCLE_FILLED}
                 backGroundFill={false}
                 disabled={false}
             />,
@@ -57,7 +58,7 @@ describe('OptionsetColour', () => {
                 onChange={onChange}
                 id="test-id"
                 iconSize="Medium"
-                iconType="CircleFilled"
+                iconType={ICONS.CIRCLE_FILLED}
                 backGroundFill={false}
                 disabled={false}
             />,
@@ -75,7 +76,7 @@ describe('OptionsetColour', () => {
                 onChange={onChange}
                 id="test-id"
                 iconSize="Medium"
-                iconType="CircleFilled"
+                iconType={ICONS.CIRCLE_FILLED}
                 backGroundFill={false}
                 disabled={true}
             />,
